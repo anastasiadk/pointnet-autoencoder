@@ -22,6 +22,7 @@ parser.add_argument('--gpu', type=int, default=0, help='GPU to use [default: GPU
 parser.add_argument('--model', default='model', help='Model name [default: model]')
 parser.add_argument('--category', default=None, help='Which single class to train on [default: None]')
 parser.add_argument('--log_dir', default='log', help='Log dir [default: log]')
+parser.add_argument('--data_path', default='data/shapenetcore_partanno_segmentation_benchmark_v0', help='Data path [default: data/shapenetcore_partanno_segmentation_benchmark_v0]')
 parser.add_argument('--num_point', type=int, default=2048, help='Point Number [default: 2048]')
 parser.add_argument('--max_epoch', type=int, default=201, help='Epoch to run [default: 201]')
 parser.add_argument('--batch_size', type=int, default=32, help='Batch Size during training [default: 32]')
@@ -62,7 +63,8 @@ BN_DECAY_CLIP = 0.99
 HOSTNAME = socket.gethostname()
 
 # Shapenet official train/test split
-DATA_PATH = os.path.join(BASE_DIR, 'data/shapenetcore_partanno_segmentation_benchmark_v0')
+# DATA_PATH = os.path.join(BASE_DIR, 'data/shapenetcore_partanno_segmentation_benchmark_v0')
+DATA_PATH = FLAGS.data_path
 TRAIN_DATASET = part_dataset.PartDataset(root=DATA_PATH, npoints=NUM_POINT, classification=False, class_choice=FLAGS.category, split='trainval')
 TEST_DATASET = part_dataset.PartDataset(root=DATA_PATH, npoints=NUM_POINT, classification=False, class_choice=FLAGS.category, split='test')
 
