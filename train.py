@@ -225,7 +225,7 @@ def eval_one_epoch(sess, ops, test_writer):
     global EPOCH_CNT
     is_training = False
     test_idxs = np.arange(0, len(TEST_DATASET))
-    num_batches = len(TEST_DATASET)/BATCH_SIZE
+    num_batches = len(TEST_DATASET)//BATCH_SIZE
 
     log_string(str(datetime.now()))
     log_string('---- EPOCH %03d EVALUATION ----'%(EPOCH_CNT))
